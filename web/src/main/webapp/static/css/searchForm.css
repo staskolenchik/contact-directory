@@ -1,0 +1,95 @@
+.search-frm-container {
+    display: none;
+}
+
+.search-wrap {
+    margin-top: 20px;
+}
+
+div.search-frm-block  {
+    text-align: left;
+}
+
+.search-frm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    height: 400px;
+}
+
+table.search-contacts-tbl, table.search-contacts-tbl thead {
+    margin: auto;
+    border: 2px solid darkgray;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: white;
+}
+
+table.search-contacts-tbl td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid darkgray;
+    height: 60px;
+}
+
+div.search-frm-block {
+    width: 30%;
+}
+
+#search-frm-sex{
+    display: block;
+    height: 40px;
+    width: 97%;
+}
+
+.search-frm-block-last {
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 30%;
+}
+
+.search-frm-block-last input{
+    display: block;
+    width: 95%;
+    border: 1px solid gray;
+    background: #fafafa;
+    height: 30px;
+    padding: 5px;
+}
+
+.search-frm-block input{
+    display: block;
+    width: 95%;
+    border: 1px solid gray;
+    background: #fafafa;
+    height: 30px;
+    padding: 5px;
+}
+
+
+
+.search-send-frm-btn {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.search-send-frm-btn button {
+    padding: 5px 15px;
+    outline: none;
+    border: 1px solid rgb(112,112,112);
+    border-radius: 1px;
+    transition: 0.2s;
+    color: black;
+}
+
+.search-send-frm-btn button:hover {
+    background: darkgray;
+    color: white;
+}
+
+.search-send-frm-btn button:active {
+    background: lightgray;
+    color: black;
+}

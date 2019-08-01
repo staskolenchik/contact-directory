@@ -1,0 +1,1 @@
+notify_on_sending_a_package(user, address)::="Dear $user.firstName$ $user.lastName$ $user.patronymic$, the package with working documents was sent at your address $address.country$, $address.city$, $address.street$, $address.building$/$address.apartment$, $address.index$."

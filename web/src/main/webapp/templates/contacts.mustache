@@ -1,0 +1,38 @@
+<table class="contacts-tbl">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="fullName">Full Name</th>
+            <th class="birthday">Birthday</th>
+            <th class="address">Address</th>
+            <th class="workplace">Workplace</th>
+        </tr>
+    </thead>
+    {{#contacts}}
+        <tbody>
+            <tr class="contact-line">
+                <td class="contact-check">
+                    <input type="checkbox" name="{{id}}"/>
+                </td>
+                <td>
+                    <span class="contact-cell">
+                        <a class="contact-link-update" onclick="updateContact('{{id}}')" href="/" >
+                            {{firstName}} {{lastName}} {{patronymic}}
+                        </a>
+                    </span>
+                </td>
+                <td class="contact-cell">{{birthday}}</td>
+                <td class="contact-cell">
+                    {{#address}}
+                        {{country}} {{city}} {{street}} {{building}} {{apartment}} {{index}}
+                    {{/address}}
+                </td>
+                <td class="contact-cell">{{workplace}}</td>
+            </tr>
+        </tbody>
+    {{/contacts}}
+</table>
+
+
+
+

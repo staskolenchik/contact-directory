@@ -1,0 +1,28 @@
+<table class="attachment-tbl">
+    <thead>
+    <tr>
+        <th></th>
+        <th class="fileName">File name</th>
+        <th class="fileDate">Upload date</th>
+        <th class="fileComment">Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#attachments}}
+        <tr class="attachment-line">
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>
+                <a class="attachment-fileName" onclick="downloadFile('{{fileName}}')" href="/">{{fileName}}</a>
+            </td>
+            <td>
+                {{fileUpload}}
+            </td>
+            <td>
+                {{fileComment}}
+            </td>
+        </tr>
+    {{/attachments}}
+    </tbody>
+</table>

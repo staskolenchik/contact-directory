@@ -1,0 +1,1 @@
+sex_change_advertising_campaign(user, address)::="Dear $user.firstName$ $user.lastName$ $user.patronymic$. We hurry to please you about the discount on sex change operations! Be $user.sex$!"

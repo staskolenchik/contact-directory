@@ -1,0 +1,163 @@
+.telephones-container {
+    display: none;
+    text-align: center;
+    margin-right: 20%;
+    margin-left: 20%;
+    background-color: white;
+    padding-top: 30px;
+}
+
+div.telephones-container button {
+    margin-bottom: 20px;
+}
+
+.frm-telephone {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.frm-telephone-block label {
+    display: block;
+}
+
+.frm-telephone-block input {
+    width: 20%;
+    border: 1px solid gray;
+    background: #fafafa;
+    height: 15px;
+    padding: 5px;
+    margin: 5px 5px 5px 5px;
+}
+
+.frm-telephone-block input[type="radio"] {
+    width: 5%;
+    margin-right: 5%;
+}
+
+.frm-telephone-block {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 10%;
+}
+
+.close-frm-telephone {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-frm-telephone:hover,
+.close-frm-telephone:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.create-telephone-btn {
+    display: inline-block;
+    padding: 5px 15px;
+    outline: none;
+    border: 1px solid rgb(112,112,112);
+    border-radius: 1px;
+    transition: 0.2s;
+    color: black;
+}
+
+.create-telephone-btn:hover {
+    background: darkgray;
+    color: white;
+}
+.create-telephone-btn:active {
+    background: lightgray;
+    color: black;
+}
+
+.update-telephone-btn {
+    display: none;
+    padding: 5px 15px;
+    outline: none;
+    border: 1px solid rgb(112,112,112);
+    border-radius: 1px;
+    transition: 0.2s;
+    color: black;
+}
+
+.update-telephone-btn:hover {
+    background: darkgray;
+    color: white;
+}
+.update-telephone-btn:active {
+    background: lightgray;
+    color: black;
+}
+
+.delete-telephone-btn {
+    display: none;
+    padding: 5px 15px;
+    outline: none;
+    border: 1px solid rgb(112,112,112);
+    border-radius: 1px;
+    transition: 0.2s;
+    color: black;
+}
+
+.delete-telephone-btn:hover {
+    background: darkgray;
+    color: white;
+}
+.delete-telephone-btn:active {
+    background: lightgray;
+    color: black;
+}
+
+.telephones-tbl-container{
+
+    background-color: white;
+}
+
+table.telephones-tbl, table.telephones-tbl thead {
+    margin: auto;
+    border: 2px solid darkgray;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: white;
+}
+
+table.telephones-tbl th {
+    text-align: center;
+    border: 1px solid darkgray;
+    height: 30px;
+    background-color: #F5F5F5
+}
+
+th.telephoneNumber {
+    width: 250px;
+}
+
+th.telephoneType {
+    width: 150px;
+}
+
+th.telephoneComment {
+    width: 250px;
+
+}
+
+table.telephones-tbl td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid darkgray;
+    height: 20px;
+}

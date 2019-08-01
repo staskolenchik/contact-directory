@@ -1,0 +1,28 @@
+<table class="telephones-tbl">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="telephoneNumber">Telephone Number</th>
+            <th class="telephoneType">Telephone Type</th>
+            <th class="telephoneComment">Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#telephones}}
+        <tr class="telephone-line">
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>
+                {{country}}{{operator}}{{number}}
+            </td>
+            <td>
+                {{phoneType}}
+            </td>
+            <td>
+                {{comment}}
+            </td>
+        </tr>
+        {{/telephones}}
+    </tbody>
+</table>

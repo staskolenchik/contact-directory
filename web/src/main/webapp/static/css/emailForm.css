@@ -1,0 +1,81 @@
+
+.email-frm-container {
+    display: none;
+}
+
+.email-frm-fields-container {
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    align-content: space-between;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.email-frm-block {
+    width: 100%;
+}
+
+.email-frm-block label {
+    display: block;
+}
+
+.email-frm-block textarea,
+.email-frm-block input{
+    width: 95%;
+    height: 40px;
+}
+
+.email-frm-block select {
+    width: 96%;
+    height: 40px;
+}
+
+.email-frm-block input{
+    border: 1px solid gray;
+    background: #fafafa;
+    height: 30px;
+    padding: 5px;
+}
+
+.email-frm-block textarea{
+    resize: none;
+    border: 1px solid gray;
+    background: #fafafa;
+    height: 80px;
+    padding: 5px;
+}
+
+.email-frm-btns-container {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 140px;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+.email-frm-btns-container button[name='email'],
+.email-frm-btns-container button[name='cancel'] {
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid black;
+    transition: 0.2s;
+    height: 60px;
+    width: 140px;
+}
+
+.email-frm-btns-container button[name='email']:hover,
+.email-frm-btns-container button[name='cancel']:hover {
+    background: darkgray;
+    color: white;
+}
+
+.email-frm-btns-container button[name='email']:active,
+.email-frm-btns-container button[name='cancel']:active {
+    background: lightgray;
+    color: black;
+}
+

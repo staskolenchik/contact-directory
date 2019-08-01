@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>Contacts Directory</Title>
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+        <link rel="stylesheet" type="text/css" href="../static/css/telephoneForm.css"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/attachmentForm.css"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/contactForm.css"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/searchForm.css"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/emailForm.css"/>
+        <script type="text/javascript" src="../static/js/calendar.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../static/css/calendar.css" />
+    </head>
+    <body>
+    <div class="wrap">
+        <h2>Contacts Directory</h2>
+
+        <div class="resp-popup">
+            <p class="resp-popup__message"></p>
+        </div>
+
+        <div class="create-frm" style="display: none">
+            <h3>Create Contact</h3>
+            <div class="post-image-block">
+                <img class="post-image" src="../static/img/avatar/avatar.jpg" alt="Avatar"/>
+                <div class="post-image-btns">
+                    <input type="file" class="post-image-file" accept="image/*"/>
+                    <span class="post-image-btn">
+                        <button type="button" name="add">Add</button>
+                    </span>
+                    <span class="post-image-btn">
+                        <button type="button" name="remove">Remove</button>
+                    </span>
+                </div>
+            </div>
+            <form id="add-form" class="create-frm">
+                <div class="create-frm-input">
+                    <label for="postFirstName">First Name* : </label>
+                    <input type="text" id="postFirstName" name="fistName" placeholder="first name">
+                </div>
+                <div class="create-frm-input">
+                    <label for="postLastName">Last Name* : </label>
+                    <input type="text" id="postLastName" name="lastName" placeholder="last name">
+                </div>
+                <div class="create-frm-input">
+                    <label for="postPatronymic">Patronymic : </label>
+                    <input type="text" id="postPatronymic" name="patronymic" placeholder="">
+                </div>
+                <div class="create-frm-input">
+                    <label for="postBirthday">Birthday : </label>
+                    <input id="postBirthday" name="birthday" type="text" class="tcal" placeholder="mm/dd/yyyy">
+                </div>
+                <div class="create-frm-input">
+                    <span>
+                        <span>Male</span>
+                        <input id="postSexM" class="create-frm-input-checkbox" name="sex" type="radio" value="MALE"
+                               checked>
+                    </span>
+                    <span>
+                        <span>Female</span>
+                        <input id="postSexFEM" class="create-frm-input-checkbox" name="sex" type="radio" value="FEMALE">
+                    </span>
+                </div>
+                <div class="create-frm-input">
+                    <label for="postCitizenship">Citizenship : </label>
+                    <input id="postCitizenship"  name="citizenship" type="text">
+                </div>
+                <div class="create-frm-input">
+                    <label for="postMaritalStatus">Marital Status : </label>
+                    <input id="postMaritalStatus" name="maritalStatus" type="text">
+                </div>
+                <div class="create-frm-input">
+                    <label for="postWebsite">Website : </label>
+                    <input id="postWebsite" name="website" type="text">
+                </div>
+                <div class="create-frm-input">
+                    <label for="postEmail">Email : </label>
+                    <input id="postEmail" name="email" type="text" placeholder="example@mail.com">
+                </div>
+                <div class="create-frm-input">
+                    <label for="postWorkplace">Current Workplace : </label>
+                    <input id="postWorkplace" name="workplace" type="text">
+                </div>
+                <div>
+                    <h3>Address</h3>
+                    <div class="create-frm-input">
+                        <label for="postCountry">Country : </label>
+                        <input id="postCountry" name="country" type="text">
+                    </div>
+                    <div class="create-frm-input">
+                        <label for="postCity">City : </label>
+                        <input id="postCity" name="city" type="text">
+                    </div>
+                    <div class="create-frm-input">
+                        <label for="postStreet">Street : </label>
+                        <input id="postStreet" name="street" type="text">
+                    </div>
+                    <div class="create-frm-input">
+                        <label for="postBuilding">Building : </label>
+                        <input id="postBuilding" name="building" type="text">
+                    </div>
+                    <div class="create-frm-input">
+                        <label for="postApartment">Apartment : </label>
+                        <input id="postApartment" name="apartment" type="text">
+                    </div>
+                    <div class="create-frm-input">
+                        <label for="postIndex">Index : </label>
+                        <input id="postIndex" name="index" type="text">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    <div class="upd-frm-container">
+        <!--class="upd-frm"-->
+        <h3>Update Form</h3>
+        <div class="upd-image-block">
+            <img class="upd-image" src="../static/img/avatar/avatar.jpg" alt="Avatar"/>
+            <div class="upd-image-btns">
+                <input type="file" class="upd-image-file" accept="image/*"/>
+                <span class="upd-image-btn">
+                        <button type="button" name="add">Add</button>
+                    </span>
+                <span class="upd-image-btn">
+                        <button type="button" name="remove">Remove</button>
+                    </span>
+            </div>
+        </div>
+        <form class="upd-form">
+            <div class="upd-frm">
+                <input type="hidden" name="id">
+            </div>
+            <div class="upd-frm">
+                <label for="updateFirstName">First Name* : </label>
+                <input id="updateFirstName" name="firstName" type="text" placeholder="first name">
+            </div>
+            <div class="upd-frm">
+                <label for="updateLastName">Last Name* : </label>
+                <input id="updateLastName" name="lastName" type="text" placeholder="last name">
+            </div>
+            <div class="upd-frm">
+                <label for="updatePatronymic">Patronymic : </label>
+                <input id="updatePatronymic" name="patronymic" type="text">
+            </div>
+            <div class="upd-frm">
+                <label for="updateBirthday">Birthday : </label>
+                <input id="updateBirthday" name="birthday" class="tcal" type="text" placeholder="mm/dd/yyyy">
+            </div>
+            <div class="upd-frm">
+                <span>Male</span>
+                <input id="updSexM" name="sex" type="radio" value="MALE">
+                <span>Female </span>
+                <input id="updSexFEM" name="sex" type="radio" value="FEMALE">
+            </div>
+            <div class="upd-frm">
+                <label for="updateCitizenship">Citizenship : </label>
+                <input id="updateCitizenship" name="citizenship" type="text">
+            </div>
+            <div class="upd-frm">
+                <label for="updateMaritalStatus">Marital Status : </label>
+                <input id="updateMaritalStatus" name="maritalStatus" type="text">
+            </div>
+            <div class="upd-frm">
+                <label for="updateWebsite">Website : </label>
+                <input id="updateWebsite" name="website" type="text">
+            </div>
+            <div class="upd-frm">
+                <label for="updateEmail">Email : </label>
+                <input id="updateEmail" name="email" type="text" placeholder="example@mail.com">
+            </div>
+            <div class="upd-frm">
+                <label for="updateWorkplace">Workplace : </label>
+                <input id="updateWorkplace" name="workplace" type="text">
+            </div>
+            <div class="upd-frm">
+                <strong>Address</strong>
+
+                <div class="upd-frm">
+                    <label for="updateCountry">Country : </label>
+                    <input id="updateCountry" name="country" type="text">
+                </div>
+                <div class="upd-frm">
+                    <label for="updateCity">City : </label>
+                    <input id="updateCity" name="city" type="text">
+                </div>
+                <div class="upd-frm">
+                    <label for="updateStreet">Street : </label>
+                    <input id="updateStreet" name="street" type="text">
+                </div>
+                <div class="upd-frm">
+                    <label for="updateBuilding">Building : </label>
+                    <input id="updateBuilding" name="building" type="text">
+                </div>
+                <div class="upd-frm">
+                    <label for="updateApartment">Apartment : </label>
+                    <input id="updateApartment" name="apartment" type="text">
+                </div>
+                <div class="upd-frm">
+                    <label for="updateIndex">Index : </label>
+                    <input id="updateIndex" name="index" type="text">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="telephones-container">
+        <span>
+            <button class="create-telephone-btn" type="button" name="create">
+                Create telephone
+            </button>
+        </span>
+        <span>
+            <button class="update-telephone-btn" type="button" name="update">
+                Update telephone
+            </button>
+        </span>
+        <span>
+            <button class="delete-telephone-btn" type="button" name="delete">
+                Delete telephone
+            </button>
+        </span>
+
+        <div class="telephones-tbl-container">
+        </div>
+
+        <div class="frm-telephone">
+            <div class="frm-telephone-block">
+                <span class="close-frm-telephone">&times;</span>
+                <h4>Please, fill fields below</h4>
+                <div>
+                    <label for="phone-country">Country phonecode (only numbers) : </label>
+                    <input id="phone-country" class="frm-telephone-content" type="text">
+                </div>
+                <div>
+                    <label for="phone-operator">Operator phonecode (only numbers) : </label>
+                    <input id="phone-operator" class="frm-telephone-content" type="text">
+                </div>
+                <div>
+                    <label for="phone-number">Phone number (only numbers) : </label>
+                    <input id="phone-number" class="frm-telephone-content" type="text">
+                </div>
+                <div class="frm-telephone-content">
+                    <span>Mobile</span>
+                    <input id="phone-type-mobile" name="phone-type" type="radio" value="MOBILE" checked>
+                    <span>Home</span>
+                    <input id="phone-type-home" name="phone-type" type="radio" value="HOME">
+                </div>
+                <div>
+                    <label for="phone-comment">Comment : </label>
+                    <input id="phone-comment" class="frm-telephone-content" type="text">
+                </div>
+                <span>
+                    <button type="button" name="create" class="frm-telephone-btn" >Create</button>
+                </span>
+                <span>
+                    <button type="button" name="save" class="frm-telephone-btn" >Save</button>
+                </span>
+                <span>
+                    <button type="button" name="cancel" class="frm-telephone-btn" >Cancel</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="attachment-container">
+        <div class="attachment-container-btn">
+            <span>
+                <button class="create-attachment-btn" type="button" name="create" style="display: inline-block">
+                    Create attachment
+                </button>
+            </span>
+            <span>
+                <button class="update-attachment-btn" type="button" name="update" style="display: none">
+                    Update attachment
+                </button>
+            </span>
+            <span>
+                <button class="delete-attachment-btn" type="button" name="delete" style="display: none">
+                    Delete attachment
+                </button>
+            </span>
+
+        </div>
+        <div class="attachments-tbl-container">
+        </div>
+
+        <div class="frm-attachment">
+            <div class="frm-attachment-block">
+                <span class="close-frm-attachment">&times;</span>
+                <h4>Please, fill fields below</h4>
+                <div class="frm-attachment-fields">
+                    <div>
+                        <label for="filename">File : </label>
+                        <input id="filename" class="frm-attachment-content" type="file">
+                    </div>
+                    <div>
+                        <label for="fileComment">Comment : </label>
+                        <input id="fileComment" class="frm-attachment-content" type="text">
+                    </div>
+                </div>
+                <span>
+                    <button type="button" name="add" class="frm-attachment-btn" style="display: inline-block">Add</button>
+                </span>
+                <span>
+                    <button type="button" name="save" class="frm-attachment-btn" style="display: none">Save</button>
+                </span>
+                <span>
+                    <button type="button" name="cancel" class="frm-attachment-btn" style="display: inline-block">Cancel</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+        <div class="upd-frm-btn-block">
+            <button type="button" name="update">Update Contact</button>
+            <button type="button" name="cancel">Cancel</button>
+        </div>
+
+        <div class="create-frm-btn-block">
+            <button class="create-frm-btn" type="button" name="createContactBtn">Create</button>
+            <button class="create-frm-btn" type="button" name="cancelCrCntBtn">Cancel</button>
+        </div>
+
+            <div class="contacts-block">
+                <div class="contact-btn-block">
+                    <button class="home-page-btn" type="button">Home</button>
+                    <button class="search-frm-btn" type="button">Search contact</button>
+                    <button class="email-frm-btn" type="button">Send Email</button>
+                    <button class="create-contact-btn" type="button">Create contact</button>
+                    <button class="delete-contact-btn" type="button">Delete contact</button>
+                </div>
+
+                <div class="search-frm-container">
+                    <div class="search-wrap">
+                        <form class="search-frm">
+                            <div class="search-frm-block">
+                                <label for="search-frm-firstname">First Name</label>
+                                <input id="search-frm-firstname" class="search-frm-input" type="text" name="firstname"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-lastname">Last Name</label>
+                                <input id="search-frm-lastname" class="search-frm-input" type="text" name="lastname"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-patronymic">Patronymic</label>
+                                <input id="search-frm-patronymic" class="search-frm-input" type="text" name="patronymic"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-birthday">Birthday</label>
+                                <select class="search-frm-elem" name="date" size="1">
+                                    <option selected name="lt" value="lt">Less then</option>
+                                    <option name="gt" value="gt">Greater then</option>
+                                </select>
+                                <input
+                                        id="search-frm-birthday"
+                                        class="search-frm-input tcal tcalInput tcalActive"
+                                        type="text" name="birthday"
+                                        placeholder="mm/dd/yyyy"
+                                />
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-sex">Sex</label>
+                                <select id="search-frm-sex" class="search-frm-elem" name="sex" size="1">
+                                    <option selected>MALE</option>
+                                    <option>FEMALE</option>
+                                </select>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-citizenship">Citizenship</label>
+                                <input  id="search-frm-citizenship" class="search-frm-input" type="text" name="citizenship"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-maritalStatus">Marital Status</label>
+                                <input id="search-frm-maritalStatus" class="search-frm-input" type="text" name="maritalStatus"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-country">Country</label>
+                                <input id="search-frm-country" class="search-frm-input" type="text" name="country"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-city">City</label>
+                                <input id="search-frm-city" class="search-frm-input" type="text" name="city"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-street">Street</label>
+                                <input id="search-frm-street" class="search-frm-input" type="text" name="street"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-building">Building</label>
+                                <input id="search-frm-building" class="search-frm-input" type="text" name="building"/>
+                            </div>
+                            <div class="search-frm-block">
+                                <label for="search-frm-apartment">Apartment</label>
+                                <input id="search-frm-apartment" class="search-frm-input" type="text" name="apartment"/>
+                            </div>
+                            <div class="search-frm-block-last" >
+                                <label for="search-frm-index">Index</label>
+                                <input id="search-frm-index" class="search-frm-input" type="text" name="index"/>
+                            </div>
+                        </form>
+                        <div class="search-send-frm-btn">
+                            <button name="search" type="button">Search</button>
+                        </div>
+                        <div class="search-contacts-container"></div>
+                    </div>
+                </div>
+
+                <div class="pages-block"></div>
+
+                <div class="contacts-tbl"></div>
+
+                <div class="email-frm-container">
+                    <div class="email-frm-fields-container">
+                        <div class="email-frm-block">
+                            <label for="email-frm-to">To : </label>
+                            <input id="email-frm-to" class="email-frm-to" type="text" readonly/>
+                        </div>
+                        <div class="email-frm-block">
+                            <label for="email-frm-subject">Subject : </label>
+                            <input id="email-frm-subject" class="email-frm-subject" type="text"/>
+                        </div>
+                        <div class="email-frm-block">
+                            <label for="email-frm-template">Template : </label>
+                            <select id="email-frm-template" class="email-frm-template">
+                                <option></option>
+                                <option>Sex change (advertising campaign)</option>
+                                <option>Notify on sending a package</option>
+                            </select>
+                        </div>
+                        <div class="email-frm-block">
+                            <label for="email-frm-text">Text : </label>
+                            <textarea id="email-frm-text" class="email-frm-text"></textarea>
+                        </div>
+                    </div>
+                    <div class="email-frm-btns-container">
+                        <button class="email-frm-send-btn" name="email" type="button">Send email</button>
+                        <button class="email-frm-send-btn" name="cancel" type="button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <script src="../static/js/contactForm.js" ></script>
+            <script src="../static/js/telephoneForm.js" ></script>
+            <script src="../static/js/attachmentForm.js" ></script>
+            <script src="../static/js/searchForm.js" ></script>
+            <script src="../static/js/emailForm.js"></script>
+
+    </div>
+    </body>
+
+</html>

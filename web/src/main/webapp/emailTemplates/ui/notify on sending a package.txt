@@ -1,0 +1,1 @@
+Dear <first name> <last name> <patronymic>, the package with working documents was sent at your address <country>, <city>, <street>, <building>/<apartment>, <index>.

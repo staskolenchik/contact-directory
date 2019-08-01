@@ -1,0 +1,110 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema contacts
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema contacts
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `contacts` DEFAULT CHARACTER SET utf8 ;
+USE `contacts` ;
+
+-- -----------------------------------------------------
+-- Table `contacts`.`contact`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `contacts`.`contact` ;
+
+CREATE TABLE IF NOT EXISTS `contacts`.`contact` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(255) NOT NULL,
+  `lastname` VARCHAR(255) NOT NULL,
+  `patronymic` VARCHAR(255) NULL,
+  `birthday` DATE NULL,
+  `sex` ENUM('MALE', 'FEMALE') NULL,
+  `citizenship` VARCHAR(255) NULL,
+  `marital_status` VARCHAR(255) NULL,
+  `website` VARCHAR(255) NULL,
+  `email` VARCHAR(255) NULL,
+  `workplace` VARCHAR(255) NULL,
+  UNIQUE INDEX `contact_id_UNIQUE` (`id` ASC),
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `contacts`.`address`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `contacts`.`address` ;
+
+CREATE TABLE IF NOT EXISTS `contacts`.`address` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `contact_id` BIGINT UNSIGNED NOT NULL,
+  `country` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
+  `street` VARCHAR(45) NULL,
+  `building` VARCHAR(45) NULL,
+  `apartment` VARCHAR(45) NULL,
+  `index` VARCHAR(45) NULL,
+  INDEX `fk_address_contact_idx` (`contact_id` ASC),
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  CONSTRAINT `fk_address_contact`
+    FOREIGN KEY (`contact_id`)
+    REFERENCES `contacts`.`contact` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `contacts`.`telephone`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `contacts`.`telephone` ;
+
+CREATE TABLE IF NOT EXISTS `contacts`.`telephone` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `contact_id` BIGINT UNSIGNED NOT NULL,
+  `country` INT UNSIGNED NULL,
+  `operator` INT UNSIGNED NULL,
+  `number` INT UNSIGNED NULL,
+  `type` ENUM('HOME', 'MOBILE') NULL,
+  `comment` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `fk_telephone_contact1_idx` (`contact_id` ASC),
+  CONSTRAINT `fk_telephone_contact1`
+    FOREIGN KEY (`contact_id`)
+    REFERENCES `contacts`.`contact` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `contacts`.`attachment`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `contacts`.`attachment` ;
+
+CREATE TABLE IF NOT EXISTS `contacts`.`attachment` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `contact_id` BIGINT UNSIGNED NOT NULL,
+  `name` VARCHAR(100) NULL,
+  `uploaddate` DATE NULL,
+  `comment` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `fk_attachment_contact1_idx` (`contact_id` ASC),
+  CONSTRAINT `fk_attachment_contact1`
+    FOREIGN KEY (`contact_id`)
+    REFERENCES `contacts`.`contact` (`id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
